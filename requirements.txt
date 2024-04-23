@@ -1,0 +1,4 @@
+Flask
+Flask-MySQLdb
+fitz
+pandas
