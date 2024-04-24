@@ -1,4 +1,8 @@
-Flask
-Flask-MySQLdb
-fitz
-pandas
+Flask==3.0.2
+Flask-MySQLdb==2.0.0
+numpy==1.26.2
+pandas==2.2.0
+PyMuPDF==1.24.1
+PyYAML==6.0.1
+SQLAlchemy==2.0.29
+mysql-connector-python==8.3.0
