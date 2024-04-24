@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Donations Data</title>
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles.css') }}">
+</head>
+
+
+<body>
+    <header>
+        <h1 style="text-decoration: underline;">Company Donations Data</h1>
+    </header>
+
+    <form method="POST" action="/companydonations">
+        <label for="company">Enter Company Name:</label>
+        <select name="company">
+            {% for i in company_names %}
+                <option value="{{ i }}" {{ 'selected' if i == company_name else '' }}>{{ i }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" style="cursor: pointer;">Submit</button>
+    </form>
+
+    <div>
+    {% if company_donations_data %}
+    <table>
+        <thead>
+            <tr>
+                <th>Name of the Encashing Party</th><th>Amount Donated</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in company_donations_data %}
+                <tr>
+                    <td>{{row[0]}}</td><td>{{row[1]}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+    {% if total_donation %}
+    <h3>Total Amount Donated = {{total_donation}}</h3>
+    {% endif %}
+    </div>
+    <br><br>
+    <div>
+        <a href="/">Back to Home</a><br><br>
+    </div>
+
+</body>
+</html>

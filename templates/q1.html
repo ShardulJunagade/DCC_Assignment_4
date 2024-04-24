@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bond Number Search</title>
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles.css') }}">
+</head>
+
+
+<body>
+    <header>
+        <h1 style="text-decoration: underline;">Bond Number Data</h1>
+    </header>
+
+    <form method="POST" action="/searchbondnumber">
+        <label for="bond">Enter Bond Number:</label>
+        <input name="bond" type="text">
+        <button type="submit" style="cursor: pointer;">Submit</button>
+    </form>
+
+
+    <div>
+        {% if bond_number_purchase_data %}
+        <h2 style="text-decoration: underline;">Purchase Details</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sr No.</th><th>Reference No (URN)</th><th>Journal Date</th><th>Date of Purchase</th><th>Date of Expiry</th><th>Name of the Purchaser</th><th>Prefix</th><th>Bond Number</th><th>Denominations</th><th>Issue Branch Code</th><th>Issue Teller</th><th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in bond_number_purchase_data %}
+                    <tr>
+                        <td>{{row[0]}}</td><td>{{row[1]}}</td><td>{{row[2]}}</td><td>{{row[3]}}</td><td>{{row[4]}}</td><td>{{row[5]}}</td><td>{{row[6]}}</td><td>{{row[7]}}</td><td>{{row[8]}}</td><td>{{row[9]}}</td><td>{{row[10]}}</td><td>{{row[11]}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+
+        <h4>No purchase data found for the given bond number.</h4>
+        {% endif %}
+
+
+
+        {% if bond_number_redemption_data %}
+            <h2 style="text-decoration: underline;">Redemption Details</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sr No.</th><th>Date of Encashment</th><th>Name of the Political Party</th><th>Account no. of the Political Party</th><th>Prefix</th><th>Bond Number</th><th>Denominations</th><th>Pay Branch Code</th><th>Pay Teller</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in bond_number_redemption_data %}
+                    <tr>
+                        <td>{{row[0]}}</td><td>{{row[1]}}</td><td>{{row[2]}}</td><td>{{row[3]}}</td><td>{{row[4]}}</td><td>{{row[5]}}</td><td>{{row[6]}}</td><td>{{row[7]}}</td><td>{{row[8]}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+        <h4>No redemption data found for the given bond number.</h4>
+        {% endif %}
+    </div>
+
+
+    <br><br>
+    <div>
+        <a href="/">Back to Home</a>
+    </div>
+
+
+</body>
+</html>

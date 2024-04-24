@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Party Bonds Data</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+        header {text-align: center}
+        form {margin: 20px}
+        form input[name="bond"] {padding: 5px; margin: 5px;}
+        div {margin: 0 20px;}
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left
+        }
+        th {
+            background-color: #333;
+            color: #fff
+        }
+        tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tbody tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+
+
+<body>
+    <header>
+        <h1 style="text-decoration: underline;">Bonds Encashed by a Political Party</h1>
+    </header>
+
+    <form method="POST" action="/searchparty">
+        <label for="party">Enter Party Name:</label>
+        <select name="party">
+            {% for i in party_names %}
+                <option value="{{ i }}" {{ 'selected' if i == party_name else '' }}>{{ i }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" style="cursor: pointer;">Submit</button>
+    </form>
+
+    <!-- {% if party_bonds_data %}
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Sr No.</th><th>Date of Encashment</th><th>Name of the Political Party</th><th>Account no. of the Political Party</th><th>Prefix</th><th>Bond Number</th><th>Denominations</th><th>Pay Branch Code</th><th>Pay Teller</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in party_bonds_data %}
+                <tr>
+                    <td>{{row[0]}}</td><td>{{row[1]}}</td><td>{{row[2]}}</td><td>{{row[3]}}</td><td>{{row[4]}}</td><td>{{row[5]}}</td><td>{{row[6]}}</td><td>{{row[7]}}</td><td>{{row[8]}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+    <br><br><br><br> -->
+
+
+
+    {% if party_bonds_data_by_year %}
+        <table style="width:50%; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th>Purchase Year</th>
+                    <th>No. of Bonds Purchased</th>
+                    <th>Total Value of Bonds Purchased</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in party_bonds_data_by_year %}
+                    <tr>
+                        <td>{{row[0]}}</td><td>{{row[1]}}</td><td>{{row[2]}}</td><td>{{row[3]}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+    <br><br><br>
+    <div>
+        <h3 style="text-decoration: underline;">Number of Bonds Encashed Yearly</h3>
+        <canvas id="bondCountChart" style="max-height: 500px; max-width: 600px;"></canvas>
+    </div>
+    <br><br><br>
+    <div>
+        <h3 style="text-decoration: underline;">Total Amount Encashed Yearly</h3>
+        <canvas id="totalAmountChart" style="max-height: 500px; max-width: 600px;"></canvas>
+    </div>
+
+    <div>
+    <script>
+        // Bond Count Chart
+        const ctx1 = document.getElementById('bondCountChart').getContext('2d');
+        const bondCountChart = new Chart(ctx1, {
+          type: 'bar',
+          data: {
+              labels: {{ year | tojson }},
+              datasets: [{
+                  label: 'Bonds Encashed',
+                  data: {{ bond_count | tojson }},
+                  backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                  borderColor: 'rgba(255, 99, 132, 1)',
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              scales: {
+                y: { beginAtZero: true,
+                    title: {text:"Number of Bonds Encashed", display: true},
+                    ticks: {precision: 0}
+                }
+              }
+          }
+        });
+
+      // Total Amount Chart
+        const ctx2 = document.getElementById('totalAmountChart').getContext('2d');
+        const totalAmountChart = new Chart(ctx2, {
+          type: 'bar',
+          data: {
+              labels: {{ year | tojson }},
+              datasets: [{
+                  label: 'Total Amount',
+                  data: {{ total_amount | tojson }},
+                  backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                  borderColor: 'rgba(75, 192, 192, 1)',
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              scales: {
+                  y: { beginAtZero: true,
+                    title: {text:"Total Amount Encashed", display: true}
+                 }
+              }
+          }
+        });
+      </script>
+    {% endif %}
+
+
+    </div>
+
+    <br><br>
+    <div>
+        <a href="/">Back to Home</a>
+    </div>
+
+</body>
+</html>
