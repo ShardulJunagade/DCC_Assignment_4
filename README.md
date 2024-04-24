@@ -40,6 +40,8 @@ Q1 Solution
 
 Q2 Solution
 ------------
+![Screenshot 2024-04-24 133014](https://github.com/ShardulJunagade/DCC_Assignment_4/assets/143334512/e677ee37-17cc-49ff-bf88-b070649ac63b)
+
 ![Screenshot 2024-04-24 094128](https://github.com/ShardulJunagade/DCC_Assignment_4/assets/143334512/e65dcf27-54fb-48f9-9212-4d7d312ea068)
 
 ![Screenshot 2024-04-24 094336](https://github.com/ShardulJunagade/DCC_Assignment_4/assets/143334512/e7c6dbc4-3315-4a78-95ab-242b4be18f04)
@@ -50,6 +52,8 @@ Q2 Solution
 
 Q3 Solution
 ------------
+![Screenshot 2024-04-24 133124](https://github.com/ShardulJunagade/DCC_Assignment_4/assets/143334512/72d3650f-ba97-4d05-80e2-82edcd46e1ba)
+
 ![Screenshot 2024-04-24 094645](https://github.com/ShardulJunagade/DCC_Assignment_4/assets/143334512/c683909d-ff68-4476-81a2-8823040c72fe)
 
 ![Screenshot 2024-04-24 094650](https://github.com/ShardulJunagade/DCC_Assignment_4/assets/143334512/f7814a5b-010d-45aa-bb91-600023a867ab)
@@ -60,12 +64,16 @@ Q3 Solution
 
 Q4 Solution
 ------------
+![Screenshot 2024-04-24 133133](https://github.com/ShardulJunagade/DCC_Assignment_4/assets/143334512/2b87e000-8713-44c1-8508-a0d7d6dfcdab)
+
 ![Screenshot 2024-04-24 094755](https://github.com/ShardulJunagade/DCC_Assignment_4/assets/143334512/37ca9dd4-f2e7-473a-917e-ad97cbac0320)
 
 
 
 Q5 Solution
 ------------
+![Screenshot 2024-04-24 133143](https://github.com/ShardulJunagade/DCC_Assignment_4/assets/143334512/86a0d214-705a-41e9-bd07-affe77a83c85)
+
 ![Screenshot 2024-04-24 095245](https://github.com/ShardulJunagade/DCC_Assignment_4/assets/143334512/4d559f7b-de7b-4b42-8b73-bd942664e443)
 
 
